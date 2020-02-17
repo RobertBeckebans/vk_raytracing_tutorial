@@ -65,11 +65,6 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
     "shaders/*.comp"
     "shaders/*.frag"
     "shaders/*.vert"
-    "shaders/*.rchit"
-    "shaders/*.rahit"
-    "shaders/*.rint"
-    "shaders/*.rmiss"
-    "shaders/*.rgen"
     )
 foreach(GLSL ${GLSL_SOURCE_FILES})
     get_filename_component(FILE_NAME ${GLSL} NAME)
