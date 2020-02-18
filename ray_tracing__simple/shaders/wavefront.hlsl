@@ -36,7 +36,7 @@ float3 computeDiffuse(WaveFrontMaterial mat, float3 lightDir, float3 normal)
   float3  c     = mat.diffuse * dotNL;
   if(mat.illum >= 1)
     return c + mat.ambient;
-  return float3(0,0,0);
+  return c;
 }
 
 float3 computeSpecular(WaveFrontMaterial mat, float3 viewDir, float3 lightDir, float3 normal)
