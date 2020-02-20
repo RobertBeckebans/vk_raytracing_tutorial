@@ -53,29 +53,6 @@ include_directories("../common")
 
 
 #####################################################################################
-# GLSL to SPIR-V custom build
-#
-# more than one file can be given: _compile_GLSL("GLSL_mesh.vert;GLSL_mesh.frag" "GLSL_mesh.spv" GLSL_SOURCES)
-# the SpirV validator is fine as long as files are for different pipeline stages (entry points still need to be main())
-#_compile_GLSL(<source(s)> <target spv> <LIST where files are appended>)
-UNSET(GLSL_SOURCES)
-UNSET(SPV_OUTPUT)
-file(GLOB_RECURSE GLSL_HEADER_FILES "shaders/*.h" "shaders/*.glsl")
-file(GLOB_RECURSE GLSL_SOURCE_FILES
-    "shaders/*.comp"
-    "shaders/*.frag"
-    "shaders/*.vert"
-    )
-foreach(GLSL ${GLSL_SOURCE_FILES})
-    get_filename_component(FILE_NAME ${GLSL} NAME)
-    _compile_GLSL(${GLSL} "shaders/${FILE_NAME}.spv" GLSL_SOURCES SPV_OUTPUT)
-endforeach(GLSL)
-
-list(APPEND GLSL_SOURCES ${GLSL_HEADER_FILES})
-source_group(Shader_Files FILES ${GLSL_SOURCES})
-
-
-#####################################################################################
 # Executable
 #
 # if(WIN32 AND NOT GLUT_FOUND)
